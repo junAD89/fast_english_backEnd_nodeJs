@@ -40,7 +40,8 @@ app.post('/chat', async (req, res) => {
             - Then: French: [translation]
             Ensure there is proper space between words. Make sure there's a space between each word, and no words are joined together.
             No extra symbols, no bold, no colons at the start, no formatting.
-            Plain text only.`
+            Plain text only. do that without \n , >, : etc
+            `
 
 
         });
