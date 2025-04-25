@@ -3,7 +3,9 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
+const fetch = require('node-fetch');
+global.fetch = fetch;
+global.Headers = fetch.Headers;
 // Importer selon la documentation Google
 const { GoogleGenAI } = require('@google/genai');
 
@@ -29,15 +31,6 @@ app.post('/chat', async (req, res) => {
         // Utiliser la syntaxe exacte de la documentation
         const response = await ai.models.generateContent({
             model: 'gemini-2.0-flash',
-            // contents: `This is a word from the user: ${frontMessage}.
-            // Give me two examples of how it is used in everyday life (each example less than 25 words).
-            // For each example:
-            // - Start with: Example 1 English: [your sentence]
-            // - Then: French: [translation]
-            // - Then: Example 2 English: [your sentence]
-            // - Then: French: [translation]
-            // No extra symbols, no bold, no colons at the start, no formatting.
-            // Plain text only.`
             contents: `This is a word from the user: ${frontMessage}.
             Give me two examples of how it is used in everyday life (each example less than 25 words).
             For each example:
@@ -52,7 +45,7 @@ app.post('/chat', async (req, res) => {
 
         });
 
-        // Envoyer la réponse
+
         console.log(response.text);
         res.send(response.text);
     } catch (error) {
@@ -62,7 +55,13 @@ app.post('/chat', async (req, res) => {
 });
 
 
+app.post('/test', (req, res) => {
+    const frontMessage = req.body.message;
 
+
+    console.log(frontMessage)
+    res.send({ welcome: "welcome" })
+})
 
 
 
