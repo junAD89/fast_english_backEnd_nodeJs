@@ -65,6 +65,15 @@ app.post('/test', (req, res) => {
 })
 
 
+app.post('/hookUpServer', (req, res) => {
+    const frontMessage = req.body;
+
+
+    console.log(frontMessage)
+    res.send({ welcome: "welcome" })
+})
+
+
 
 // Démarrer le serveur
 app.listen(3000, () => {
