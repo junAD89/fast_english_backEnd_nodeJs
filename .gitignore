@@ -1,2 +1,9 @@
+# Fichiers d'environnement
 .env
+.env.local
+.env.*
+
+# Autres fichiers à ignorer
+node_modules/
+.DS_Store
 # c est bon
